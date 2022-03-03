@@ -9,7 +9,7 @@ from rest_framework_simplejwt.views import (
 )
 from firm.views import *
 urlpatterns = [
-    path('', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('signup/', CreateUserView.as_view()),
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
