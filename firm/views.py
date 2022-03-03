@@ -23,7 +23,10 @@ class CompanyDetailView(APIView):
     def get(self, request, *args, **kwargs):
         id = kwargs['id']
         company = list(CompanyModel.objects.filter(id=id).values())
-        users = list(UsersModel.objects.filter(company=company[0]['id']).values())
+        users = []
+        for temp_company in company:
+            users = list(UsersModel.objects.filter(company=temp_company['id']).values())
+        
         return JsonResponse({
             'company':company,
             'users':users,
